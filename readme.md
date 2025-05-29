@@ -8,4 +8,4 @@ Este es el repositorio para la materia BDR en la MCD impartida en FCFM, UANL.
 
 Materia impartida por el doctor [Alberto Benavides](https://github.com/albertobenavides)
 
-- [Tarea1](Tarea1\Tarea1.md)
+- [Tarea1](Tarea1/Tarea1.md)
