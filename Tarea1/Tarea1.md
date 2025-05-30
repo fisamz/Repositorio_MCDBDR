@@ -1,7 +1,6 @@
-# Tarea 1
-## Base de Datos Relacionales
+# Tarea 1 (Base de Datos Relacionales)
 
-### Descripción Base de Datos 
+## Descripción Base de Datos 
 
 La base de datos con la que se va a trabajar se llama "Stress and Sleep Patterns" obtenida desde el repositorio de Kaggle (https://www.kaggle.com/datasets/orvile/stress-and-sleep-patterns)
 
@@ -35,7 +34,7 @@ La base de datos consta de 116 registros obtenidos mediante encuestas. En cada e
   - [Doing something without help]
 
 
-### SGBD
+## SGBD
 
 - [MySQL](https://www.mysql.com)
   - Muy usado en aplicaciones web (LAMP).
