@@ -25,14 +25,14 @@ La base de datos consta de 116 registros obtenidos mediante encuestas. En cada e
 - **(Categorica Ordinal)** During the past month, how often have you had trouble sleeping because you: (choose an option that indicate the most accurate reply for the majority of days and nights in the past month) [Feel too hot]
 - **(Categorica Ordinal)** During the past month, how often have you had trouble sleeping because you: (choose an option that indicate the most accurate reply for the majority of days and nights in the past month) [Have bad dreams]
 - **(Categorica Ordinal)** During the past month, how often have you had trouble sleeping because you: (choose an option that indicate the most accurate reply for the majority of days and nights in the past month) [Have pain]
-- **(Categorica Ordinal)** What is your stress level in these given situations 
- - [You have to submit an assignment in less than a day]
- - [A week before exams]
- - [Asking for an extra ketchup packet at a restaurant]
- - [Meeting a new person ]
- - [Asking for help]
- - [Confronting someone]
- - [Doing something without help]
+- **(Categorica Ordinal)** What is your stress level in these given situations: 
+  - [You have to submit an assignment in less than a day]
+  - [A week before exams]
+  - [Asking for an extra ketchup packet at a restaurant]
+  - [Meeting a new person ]
+  - [Asking for help]
+  - [Confronting someone]
+  - [Doing something without help]
 
 
 ### SGBD
