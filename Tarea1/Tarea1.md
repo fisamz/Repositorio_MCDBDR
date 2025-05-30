@@ -37,4 +37,34 @@ La base de datos consta de 116 registros obtenidos mediante encuestas. En cada e
 
 ### SGBD
 
-Para el análisis se usara MySQL 
+- [MySQL](https://www.mysql.com)
+  - Muy usado en aplicaciones web (LAMP).
+  - Compatible con Windows, Linux, MacOS.
+  - Soporte para ACID, replicación, particionamiento.
+  - Motores de almacenamiento: InnoDB, MyISAM, etc.
+
+- [PostgreSQL](https://www.postgresql.org)
+  - 100% open source y orientado a estándares SQL.
+  - Soporte nativo para JSON, arrays, XML, GIS (PostGIS).
+  - Manejo avanzado de concurrencia (MVCC).
+  - Extensible: permite crear funciones, tipos y operadores personalizados.
+
+- [Microsoft SQL Server](https://www.microsoft.com/sql-server)
+  - Altamente integrado con herramientas Microsoft (Azure, .NET).
+  - Motor híbrido OLTP/OLAP con soporte a big data.
+  - Incluye SSMS (SQL Server Management Studio) para gestión visual.
+  - Alto rendimiento en sistemas empresariales.
+
+- [Oracle Database](https://www.oracle.com/database)
+  - Sistema robusto para transacciones empresariales críticas.
+  - Avanzadas opciones de replicación, clustering y seguridad.
+  - Compatible con PL/SQL (lenguaje procedural propio).
+  - Altamente optimizado para rendimiento en grandes volúmenes.
+
+- [SQLite](https://www.sqlite.org)
+  - Ligero, sin servidor, y embebido en una sola librería.
+  - Muy usado en apps móviles (Android, iOS) y navegadores.
+  - No requiere configuración ni instalación.
+  - Velocidad excelente en entornos livianos.
+
+  **El sistema que usaremos será MySQL**
