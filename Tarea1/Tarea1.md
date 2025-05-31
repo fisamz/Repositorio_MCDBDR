@@ -66,4 +66,4 @@ La base de datos consta de 116 registros obtenidos mediante encuestas. En cada e
   - No requiere configuración ni instalación.
   - Velocidad excelente en entornos livianos.
 
-  **El sistema que usaremos será MySQL**
+  **El sistema que usaremos será MySQL.**
