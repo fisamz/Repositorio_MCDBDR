@@ -2,7 +2,7 @@
 
 ## Descripción Base de Datos 
 
-La base de datos con la que se va a trabajar se llama "Studen Perfomance Dataset" obtenida desde el repositorio de Kaggle (https://www.kaggle.com/datasets/devansodariya/student-performance-data/data).
+La base de datos con la que se va a trabajar se llama "Student Perfomance Dataset" obtenida desde el repositorio de Kaggle (https://www.kaggle.com/datasets/devansodariya/student-performance-data/data).
 
 Esta base de datos consta de 2 tablas, ambas tablas contienen una muestra de estudiantes de 2 escuelas en Portugal, sin embargo una tabla muestra las calificaciones de cada estudiante en un curso de matemáticas mientras que la otra muestra las calificaciones en un curso de Portugues. 
 
