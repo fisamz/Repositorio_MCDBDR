@@ -6,7 +6,7 @@ La base de datos con la que se va a trabajar se llama "Studen Perfomance Dataset
 
 Esta base de datos consta de 2 tablas, ambas tablas contienen una muestra de estudiantes de 2 escuelas en Portugal, sin embargo una tabla muestra las calificaciones de cada estudiante en un curso de matemáticas mientras que la otra muestra las calificaciones en un curso de Portugues. 
 
-Para cada tabla se obtiene la siguiente información para cada estudiante (entre paretesis se coloca el tipo de dato y el dominio de la variable):
+Para cada tabla se obtiene la siguiente información para cada estudiante:
 
 |  | Variable | Description | Type: Domain |
 |--|----------|-------------|--------------|
@@ -107,4 +107,4 @@ Para cada tabla se obtiene la siguiente información para cada estudiante (entre
   - No requiere configuración ni instalación.
   - Velocidad excelente en entornos livianos.
 
-  **El sistema que usaremos será MySQL.**
+  **El sistema que se usará en los próximos entregables será MySQL.**
