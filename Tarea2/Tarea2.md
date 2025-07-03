@@ -25,3 +25,5 @@ El modelo incluye las siguientes relaciones:
 - Cada estudiante pertenece a una escuela (N:1).
 - Cada curso es ofrecido por una escuela (N:1).
 - Las calificaciones relacionan a estudiantes con cursos (N:N resuelto mediante la entidad GRADES).
+
+(Tarea1/Tarea1.md)
