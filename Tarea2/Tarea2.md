@@ -10,7 +10,7 @@ El modelo describe las entidades principales, sus atributos y las relaciones ent
 
 ![Modelo ER Parte 1](MODELOER_P1.png)
 
-#### Atributos de la Entidad "Students"
+#### Atributos de la Entidad "Student"
 
 ![Modelo ER Parte 2](MODELOER_P2.png)
 
