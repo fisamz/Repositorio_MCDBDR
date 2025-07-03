@@ -2,6 +2,6 @@
 
 ## Modelo Entidad - Relación
 
-![Modelo ER](Tarea2/MODELOER_P1.png)
+![Modelo ER](MODELOER_P1.png)
 
-![Modelo ER](Tarea2/MODELOER_P2.png)
+![Modelo ER](MODELOER_P2.png)
