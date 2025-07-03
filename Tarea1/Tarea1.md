@@ -6,7 +6,7 @@ La base de datos con la que se va a trabajar se llama "Student Perfomance Datase
 
 Esta base de datos consta de 2 tablas, ambas tablas contienen una muestra de estudiantes de 2 escuelas en Portugal, sin embargo una tabla muestra las calificaciones de cada estudiante en un curso de matemáticas mientras que la otra muestra las calificaciones en un curso de Portugues. 
 
-Para cada tabla se obtiene la siguiente información para cada estudiante:
+Para cada tabla se obtiene la siguiente información para cada estudiante
 
 |  | Variable | Description | Type: Domain |
 |--|----------|-------------|--------------|
