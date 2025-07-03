@@ -4,7 +4,9 @@
 
 La base de datos con la que se va a trabajar se llama "Student Perfomance Dataset" obtenida desde el repositorio de Kaggle (https://www.kaggle.com/datasets/devansodariya/student-performance-data/data).
 
-Esta base de datos se divide en 4 tablas relevantes para nuestro análisis:
+La base de datos proviene de un estudio sobre el desempeño académico de estudiantes de dos escuelas portuguesas: Gabriel Pereira (GP) y Mousinho da Silveira (MS). El objetivo del dataset es analizar las variables socioeconómicas, familiares y académicas de los estudiantes para identificar posibles factores que influyen en su rendimiento escolar.
+
+Esta base de datos se divide en 4 tablas relevantes para nuestro análisis con el objetivo de que el modelo permita representar las relaciones entre escuelas, estudiantes, cursos y calificaciones, facilitando el acceso, consulta y análisis de los datos.
 
 ### SCHOOL
 
