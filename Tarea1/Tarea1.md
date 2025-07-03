@@ -4,50 +4,75 @@
 
 La base de datos con la que se va a trabajar se llama "Student Perfomance Dataset" obtenida desde el repositorio de Kaggle (https://www.kaggle.com/datasets/devansodariya/student-performance-data/data).
 
-Esta base de datos consta de 2 tablas, ambas tablas contienen una muestra de estudiantes de 2 escuelas en Portugal, sin embargo una tabla muestra las calificaciones de cada estudiante en un curso de matemáticas mientras que la otra muestra las calificaciones en un curso de Portugues. 
+Esta base de datos se divide en 4 tablas relevantes para nuestro análisis:
 
-Para cada tabla se obtiene la siguiente información para cada estudiante
+### SCHOOL
 
-|  | Variable | Description | Type: Domain |
-|--|----------|-------------|--------------|
-| 1 | school | student's school | binary: "GP" - Gabriel Pereira or "MS" - Mousinho da Silveira |
-| 2 | sex | student's sex | binary: "F" - female or "M" - male |
-| 3 | age | student's age | numeric: from 15 to 22 |
-| 4 | address | student's home address type | binary: "U" - urban or "R" - rural |
-| 5 | famsize | family size | binary: "LE3" - less or equal to 3 or "GT3" - greater than 3 |
-| 6 | Pstatus | parent's cohabitation status | binary: "T" - living together or "A" - apart |
-| 7 | Medu | mother's education | numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education |
-| 8 | Fedu | father's education | numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education |
-| 9 | Mjob | mother's job | nominal: "teacher", "health" care related, civil "services" (e.g. administrative or police), "at_home" or "other" |
-| 10 | Fjob | father's job | nominal: "teacher", "health" care related, civil "services" (e.g. administrative or police), "at_home" or "other" |
-| 11 | reason | reason to choose this school | nominal: close to "home", school "reputation", "course" preference or "other" |
-| 12 | guardian | student's guardian | nominal: "mother", "father" or "other" |
-| 13 | traveltime | home to school travel time | numeric: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour |
-| 14 | studytime | weekly study time | numeric: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours |
-| 15 | failures | number of past class failures | numeric: n if 1<=n<3, else 4 |
-| 16 | schoolsup | extra educational support | binary: yes or no |
-| 17 | famsup | family educational support | binary: yes or no |
-| 18 | paid | extra paid classes within the course subject | binary: yes or no |
-| 19 | activities | extra-curricular activities | binary: yes or no |
-| 20 | nursery | attended nursery school | binary: yes or no |
-| 21 | higher | wants to take higher education | binary: yes or no |
-| 22 | internet | Internet access at home | binary: yes or no |
-| 23 | romantic | with a romantic relationship | binary: yes or no |
-| 24 | famrel | quality of family relationships | numeric: from 1 - very bad to 5 - excellent |
-| 25 | freetime | free time after school | numeric: from 1 - very low to 5 - very high |
-| 26 | goout | going out with friends | numeric: from 1 - very low to 5 - very high |
-| 27 | Dalc | workday alcohol consumption | numeric: from 1 - very low to 5 - very high |
-| 28 | Walc | weekend alcohol consumption | numeric: from 1 - very low to 5 - very high |
-| 29 | health | current health status | numeric: from 1 - very bad to 5 - very good |
-| 30 | absences | number of school absences | numeric: from 0 to 93 |
-| 31 | G1 | first period grade | numeric: from 0 to 20 |
-| 32 | G2 | second period grade | numeric: from 0 to 20 |
-| 33 | G3 | final grade | numeric: from 0 to 20, output target |
+| Variable   | Description                 | Type: Domain                   |
+|------------|-----------------------------|---------------------------------|
+| school_id  | School identifier            | string: {"GP", "MS"}           |
+| name       | School name                  | string: {"Gabriel Pereira", "Mousinho da Silveira"} |
+
+
+### STUDENT
+
+| Variable    | Description                   | Type: Domain                   |
+|-------------|-------------------------------|---------------------------------|
+| student_id  | Student identifier             | int                            |
+| school_id   | School the student belongs to   | string: {"GP", "MS"}           |
+| sex         | Student sex                    | string: {"F", "M"}             |
+| age         | Student age                    | int                            |
+| address     | Student home address type       | string: {"U", "R"}             |
+| famsize     | Family size                    | string: {"LE3", "GT3"}         |
+| Pstatus     | Parent's cohabitation status    | string: {"T", "A"}             |
+| Medu        | Mother's education level        | int: [0, 4]                    |
+| Fedu        | Father's education level        | int: [0, 4]                    |
+| Mjob        | Mother's job                    | string: {"teacher", "health", "services", "at_home", "other"} |
+| Fjob        | Father's job                    | string: {"teacher", "health", "services", "at_home", "other"} |
+| reason      | Reason to choose the school     | string: {"home", "reputation", "course", "other"} |
+| guardian    | Student's guardian              | string: {"mother", "father", "other"} |
+| traveltime  | Home to school travel time      | int: [1, 4]                    |
+| studytime   | Weekly study time               | int: [1, 4]                    |
+| failures    | Number of past class failures   | int: [0, 4]                    |
+| schoolsup   | Extra educational support       | string: {"yes", "no"}          |
+| famsup      | Family educational support      | string: {"yes", "no"}          |
+| paid        | Extra paid classes (Math/Port.) | string: {"yes", "no"}          |
+| activities  | Extra-curricular activities     | string: {"yes", "no"}          |
+| nursery     | Attended nursery school         | string: {"yes", "no"}          |
+| higher      | Wants to take higher education  | string: {"yes", "no"}          |
+| internet    | Internet access at home         | string: {"yes", "no"}          |
+| romantic    | With a romantic relationship    | string: {"yes", "no"}          |
+| famrel      | Family relationship quality     | int: [1, 5]                    |
+| freetime    | Free time after school          | int: [1, 5]                    |
+| goout       | Going out with friends          | int: [1, 5]                    |
+| Dalc        | Workday alcohol consumption     | int: [1, 5]                    |
+| Walc        | Weekend alcohol consumption     | int: [1, 5]                    |
+| health      | Current health status           | int: [1, 5]                    |
+| absences    | Number of school absences       | int                            |
+
+
+### COURSE
+
+| Variable   | Description                 | Type: Domain                   |
+|------------|-----------------------------|---------------------------------|
+| course_id  | Course identifier            | int                            |
+| school_id  | School offering the course    | string                         |
+| name       | Course name                  | string: {"Math", "Portuguese"} |
+
+
+### GRADES
+
+| Variable    | Description                  | Type: Domain                   |
+|-------------|------------------------------|---------------------------------|
+| student_id  | Student who obtained the grade | int                            |
+| course_id   | Course corresponding to the grade | int                         |
+| G1          | First period grade            | int: [0, 20]                   |
+| G2          | Second period grade           | int: [0, 20]                   |
+| G3          | Final grade                   | int: [0, 20]                   |
+
 
 ## Notas importantes a considerar en nuestra base de datos:
 
-- Cada tabla de nuestra base de datos muestra las calificaciones de primer periodo, segundo periodo y finales (columnas 31-33) para el curso en cuestión. 
-- La columna 1 muestra la escuela a la que pertenece el alumno ya sea el colegio Gabriel Pereira (GP) o Mousinho da Silveira (MS), un alumno de cierta escuela puede pertenecer a ambas muestras dado que un alumno que estudia en el colegia Gabriel Pereira puede haber tomado un curso de matemáticas y uno de portugués. En esta base de datos hay una cantidad de 382 alumnos que sus datos fueron recabados para alimentar ambas tablas.
 - En el sistema educativo Portugues se maneja una escala 0-20 en las calificaciones, donde la calificación aprobatoria es 10 (50 en escala México). Se trabajarán los datos respetando este sistema de calificaciones, sin embargo, con fines meramente informativos se muestra a continuación una tabla de equivalencias entre el sistema de calificaciones portugués y mexicano.
 
 | Nota Portugal (0-20) | Nota México (0-100) |
