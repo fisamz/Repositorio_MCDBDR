@@ -2,6 +2,10 @@
 
 ## Modelo Relacional
 
+En esta tarea se realiza el diseño y análisis de un modelo relacional a partir de un modelo entidad-relación previamente desarrollado. Se definen las relaciones (tablas) con sus respectivos atributos, claves primarias y claves foráneas. 
+
+Como se ha mencionado anteriormente la base de datos consta de 4 relaciones (tablas), con los siguientes atributos:
+
 ### School →
 
 School(**school_id** (PK), name)
@@ -37,7 +41,9 @@ Grades(**student_id** (FK), **course_id** (FK), G1, G2, G3 )
 
 ---
 
-### Operaciones Álgebra Relacional
+## Operaciones Álgebra Relacional
+
+Además, se plantean y documentan diversas operaciones de álgebra relacional aplicadas al modelo diseñado. onal.
 
 **1- Selección (σ)**: σ absences > 10 (Student)
 
