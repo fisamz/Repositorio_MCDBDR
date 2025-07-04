@@ -30,6 +30,8 @@ Grades(**student_id** (FK), **course_id** (FK), G1, G2, G3 )
 
 ---
 
+Asimismo los anteriores atributos del modelo relacional pueden ser presentados por el siguiente diagrama.
+
 ### Diagrama (Modelo Relacional)
 
 ![Modelo Relacional](Diagrama_Relacional.png)
