@@ -18,12 +18,12 @@ El modelo describe las entidades principales, sus atributos y las relaciones ent
 
 - **SCHOOL**: Representa las escuelas. Cada escuela tiene un identificador y un nombre.  
 - **STUDENT**: Contiene los datos de los estudiantes y su relación con la escuela a la que pertenecen.  
-- **COURSE**: Incluye los cursos ofrecidos por cada escuela.  
+- **COURSE**: Incluye los cursos ofrecidos.  
 - **GRADES**: Almacena las calificaciones de los estudiantes en los diferentes cursos.
 
 El modelo incluye las siguientes relaciones:
-- Cada estudiante pertenece a una escuela (N:1).
-- Cada curso es ofrecido por una escuela (N:1).
+- N estudiantes pertenecen a una escuela (N:1).
+- N calificaciones (grades) pertenecen a 1 estudiante (student) (N:1).
 - Las calificaciones relacionan a estudiantes con cursos (N:N resuelto mediante la entidad GRADES).
 
 **[Para conocer mas detalles de cada atributo, revisar Tarea 1.](../Tarea1/Tarea1.md)**
