@@ -26,4 +26,6 @@ El modelo incluye las siguientes relaciones:
 - N calificaciones (grades) pertenecen a 1 estudiante (student) (N:1).
 - Las calificaciones relacionan a estudiantes con cursos (N:N resuelto mediante la entidad GRADES).
 
+---
+
 **[Para conocer mas detalles de cada atributo, revisar Tarea 1.](../Tarea1/Tarea1.md)**
