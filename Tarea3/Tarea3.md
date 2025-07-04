@@ -3,7 +3,6 @@
 ## Modelo Relacional
 
 ### School →
-
 School(**school_id** (PK), name)
 
 ### Student →
