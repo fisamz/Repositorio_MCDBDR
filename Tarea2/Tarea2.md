@@ -8,7 +8,7 @@ El modelo describe las entidades principales, sus atributos y las relaciones ent
 
 ### Diagrama Entidad-Relación
 
-![Modelo ER Parte 1](MODELOER_P1.png)
+![Modelo ER Parte 1](MODELOER_P1_v2.png)
 
 #### Atributos de la Entidad "Student"
 
