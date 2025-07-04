@@ -4,4 +4,4 @@
 
 ### School
 
-School(_school_id_, name)
+School(<u>school_id</u>, name)
