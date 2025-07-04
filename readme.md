@@ -10,3 +10,9 @@ Materia impartida por el doctor [Alberto Benavides](https://github.com/albertobe
 
 - [Tarea1](Tarea1/Tarea1.md)
 - [Tarea2](Tarea2/Tarea2.md)
+- [Tarea3](Tarea3/Tarea3.md)
+- [Tarea4](Tarea4/Tarea4.md)
+- [Tarea5](Tarea5/Tarea5.md)
+- [Tarea6](Tarea6/Tarea6.md)
+- [Tarea7](Tarea7/Tarea7.md)
+- [Tarea8](Tarea8/Tarea8.md)
