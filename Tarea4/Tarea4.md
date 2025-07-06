@@ -1,6 +1,8 @@
 # Tarea 4 (Base de Datos Relacionales)
 
-## El siguiente código esta hecho con el SGBD MySQL, en el código se realiza lo siguiente:
+## Creación de base de datos en MySQL
+
+**El código SQL realiza lo siguiente:**
 
  - Se crea la base de datos en la cual se guardara cada una de nuestras tablas, esta BD es llamada *STUDENTS_PERFORMANCE_DB*
  - En la base de datos se crean 4 tablas siguiendo la lógica del modelo relacional y modelo entidad-relación observado en los anteriores entregables. Las 4 tablas son:
