@@ -1,6 +1,6 @@
 # Tarea 4 (Base de Datos Relacionales)
 
-## Creación de base de datos en MySQL
+## Creación de base de datos *(Lenguage SQL, se usa como SGBD MySQL)*
 
 **El código SQL realiza lo siguiente:**
 
@@ -9,7 +9,8 @@
     - School
     - Course
     - Student
-    - Grades
+    - Grades  
+
  En cada tabla se definen cuales son sus PK, FK y tipo de valor de cada atributo.
  - Finalmente se poblan completamente las tablas *School* y *Course*, mientras que para las tablas *Student* y *Grades* se incluyen 10 registros.
 
