@@ -52,7 +52,7 @@ GROUP BY school_id;
 | GP         | 254               |
 | MS         | 246               |
 
-### Medi
+### Media
 
 *Calificacion promedio en el G3 de todos los estudiantes que llevaron curso Math*
 ```sql
@@ -62,3 +62,6 @@ FROM Grades
 WHERE course_id = 1;
 
 ```
+**Resultado: 10.1489**
+
+### Mínimos y Máximos
