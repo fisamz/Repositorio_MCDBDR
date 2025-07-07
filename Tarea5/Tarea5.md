@@ -65,3 +65,22 @@ WHERE course_id = 1;
 **Resultado: 10.1489**
 
 ### Mínimos y Máximos
+
+*Calificacion mas alta en el G3 independientemente del curso y escuela*
+```sql
+
+SELECT MAX(G3) AS max_G3
+FROM Grades;
+
+```
+**Resultado: 20**
+
+*Calificacion mas baja en math en el G3*
+```sql
+
+SELECT MIN(G1) AS min_G1_math
+FROM Grades
+WHERE course_id = 1;
+
+```
+**Resultado: 0**
