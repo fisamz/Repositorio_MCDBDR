@@ -15,4 +15,3 @@ Materia impartida por el doctor [Alberto Benavides](https://github.com/albertobe
 - [Tarea5](Tarea5/Tarea5.md)
 - [Tarea6](Tarea6/Tarea6.md)
 - [Tarea7](Tarea7/Tarea7.md)
-- [Tarea8](Tarea8/Tarea8.md)
