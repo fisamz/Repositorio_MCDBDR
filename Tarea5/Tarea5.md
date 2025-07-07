@@ -84,3 +84,79 @@ WHERE course_id = 1;
 
 ```
 **Resultado: 0**
+
+### Cálculo de cuantiles
+
+*Cálculo del primer cuartil (25%) y el tercer cuartil (75%) de todas las calificaciones en el Q3 sin hacer distinción por curso o escuela*
+```sql
+
+SET @offset_q1 = FLOOR((SELECT COUNT(*) FROM Grades) * 0.25 )-1;
+SET @sql = CONCAT(
+  'SELECT G3 FROM Grades ORDER BY G3 LIMIT 1 OFFSET ', @offset_q1
+);
+
+SELECT @offset_q1;
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+SET @offset_q3 = FLOOR((SELECT COUNT(*) FROM Grades) * 0.75 )-1;
+SET @sql = CONCAT(
+  'SELECT G3 FROM Grades ORDER BY G3 LIMIT 1 OFFSET ', @offset_q3
+);
+
+SELECT @offset_q3;
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+```
+
+### Moda
+
+*Cálculo de la moda de las calificaciones en el G1, G2 y G3 sin hacer distinción por curso o escuela*
+```sql
+
+(
+  SELECT 'G1' AS periodo, G1 AS calificacion, COUNT(*) AS frecuencia
+  FROM Grades
+  GROUP BY G1
+  ORDER BY frecuencia DESC
+  LIMIT 1
+)
+UNION ALL
+(
+  SELECT 'G2' AS periodo, G2 AS calificacion, COUNT(*) AS frecuencia
+  FROM Grades
+  GROUP BY G2
+  ORDER BY frecuencia DESC
+  LIMIT 1
+)
+UNION ALL
+(
+  SELECT 'G3' AS periodo, G3 AS calificacion, COUNT(*) AS frecuencia
+  FROM Grades
+  GROUP BY G3
+  ORDER BY frecuencia DESC
+  LIMIT 1
+);
+
+
+```
+
+| periodo | moda | frecuencia |
+|---------|--------------|------------|
+| G1      | 1            | 9          |
+| G2      | 16           | 8          |
+| G3      | 11           | 9          |
+
+
+## Hallazgos y dificultades
+
+- Se identificó que algunas funciones avanzadas de MySQL, como `PERCENTILE_CONT`, no estaban disponibles en la versión del servidor utilizada. Esto obligó a buscar soluciones alternativas para el cálculo de cuantiles, como ordenar los datos y utilizar `LIMIT OFFSET` para seleccionar el valor en la posición correspondiente.
+- El uso de variables como `@offset_q1` no fue aceptado directamente dentro de `LIMIT OFFSET`, por lo que se consideró el uso de queries dinámicos con `PREPARE` y `EXECUTE`.
+- Para la moda fue posible obtener el valor más frecuente mediante `GROUP BY` y `ORDER BY`, pero si hubiera habido empate en la frecuencia máxima, la consulta actual solo devuelve uno de los valores. Esto es una limitación conocida de `LIMIT 1`.
+
