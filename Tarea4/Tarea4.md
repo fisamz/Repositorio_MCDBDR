@@ -14,10 +14,10 @@
  - Finalmente se poblan completamente las tablas *School* y *Course*, mientras que para las tablas *Student* y *Grades* se incluyen 10 registros.
 
 ```sql
--- Eliminamos la base si existe
+-- Eliminar BD si existe
 DROP DATABASE IF EXISTS STUDENTS_PERFORMANCE_DB;
 
--- Creamos la base
+-- Creamos BD
 CREATE DATABASE STUDENTS_PERFORMANCE_DB;
 USE STUDENTS_PERFORMANCE_DB;
 
@@ -36,19 +36,19 @@ CREATE TABLE Course (
 -- Tabla Student
 CREATE TABLE Student (
     student_id INT PRIMARY KEY,
-    sex VARCHAR(10),
+    sex VARCHAR(1) CHECK (sex IN ('F', 'M')),
     age INT,
-    address VARCHAR(100),
-    famsize VARCHAR(10),
-    Pstatus VARCHAR(10),
-    Medu INT,
-    Fedu INT,
-    Mjob VARCHAR(50),
-    Fjob VARCHAR(50),
-    guardian VARCHAR(50),
-    traveltime INT,
-    studytime INT,
-    failures INT,
+    address VARCHAR(1) CHECK (address IN ('U', 'R')),
+    famsize VARCHAR(3) CHECK (famsize IN ('LE3', 'GT3')),
+    Pstatus VARCHAR(1) CHECK (Pstatus IN ('T', 'A')),
+    Medu INT CHECK (Medu BETWEEN 0 AND 4),
+    Fedu INT CHECK (Fedu BETWEEN 0 AND 4),
+    Mjob VARCHAR(10) CHECK (Mjob IN ('teacher', 'health', 'services', 'at_home', 'other')),
+    Fjob VARCHAR(10) CHECK (Fjob IN ('teacher', 'health', 'services', 'at_home', 'other')),
+    guardian VARCHAR(10) CHECK (guardian IN ('mother', 'father', 'other')),
+    traveltime INT CHECK (traveltime BETWEEN 1 AND 4),
+    studytime INT CHECK (studytime BETWEEN 1 AND 4),
+    failures INT CHECK (failures BETWEEN 0 AND 4),
     schoolsup BOOLEAN,
     famsup BOOLEAN,
     paid BOOLEAN,
@@ -57,12 +57,12 @@ CREATE TABLE Student (
     higher BOOLEAN,
     internet BOOLEAN,
     romantic BOOLEAN,
-    famrel INT,
-    freetime INT,
-    goout INT,
-    Dalc INT,
-    Walc INT,
-    health INT,
+    famrel INT CHECK (famrel BETWEEN 1 AND 5),
+    freetime INT CHECK (freetime BETWEEN 1 AND 5),
+    goout INT CHECK (goout BETWEEN 1 AND 5),
+    Dalc INT CHECK (Dalc BETWEEN 1 AND 5),
+    Walc INT CHECK (Walc BETWEEN 1 AND 5),
+    health INT CHECK (health BETWEEN 1 AND 5),
     absences INT,
     school_id VARCHAR(10),
     FOREIGN KEY (school_id) REFERENCES School(school_id) ON DELETE CASCADE
@@ -72,13 +72,14 @@ CREATE TABLE Student (
 CREATE TABLE Grades (
     student_id INT,
     course_id INT,
-    G1 INT,
-    G2 INT,
-    G3 INT,
+    G1 INT CHECK (G1 BETWEEN 0 AND 20),
+    G2 INT CHECK (G2 BETWEEN 0 AND 20),
+    G3 INT CHECK (G3 BETWEEN 0 AND 20),
     PRIMARY KEY (student_id, course_id),
     FOREIGN KEY (student_id) REFERENCES Student(student_id) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES Course(course_id) ON DELETE CASCADE
 );
+
 
 -- Insertar datos School
 INSERT INTO School VALUES
@@ -90,7 +91,7 @@ INSERT INTO Course VALUES
 (1, 'Math'),
 (2, 'Portuguese');
 
--- Insertar datos Student (10 primeros)
+-- Insertar datos Student
 INSERT INTO Student VALUES
 (1, 'F', 18, 'U', 'GT3', 'A', 4, 4, 'at_home', 'teacher', 'mother', 2, 2, 0, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, 4, 3, 4, 1, 1, 3, 6, 'GP'),
 (2, 'F', 17, 'U', 'GT3', 'T', 1, 1, 'at_home', 'other', 'father', 1, 2, 0, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, 5, 3, 3, 1, 1, 3, 4, 'GP'),
@@ -103,7 +104,7 @@ INSERT INTO Student VALUES
 (9, 'M', 15, 'U', 'LE3', 'A', 3, 2, 'services', 'other', 'mother', 1, 2, 0, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, 4, 2, 2, 1, 1, 1, 0, 'GP'),
 (10, 'M', 15, 'U', 'GT3', 'T', 3, 4, 'other', 'other', 'mother', 1, 2, 0, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, 5, 5, 1, 1, 1, 5, 0, 'GP');
 
--- Insertar datos Grades (10 primeros)
+-- Insertar datos Grades
 INSERT INTO Grades VALUES
 (1,1,5,6,6),
 (1,2,0,11,11),
@@ -116,7 +117,7 @@ INSERT INTO Grades VALUES
 (5,1,6,10,10),
 (5,2,11,13,13);
 
--- Mostrar tablas y contenido
+
 SHOW TABLES;
 SELECT * FROM School;
 SELECT * FROM Course;
