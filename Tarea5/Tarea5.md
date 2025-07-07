@@ -38,6 +38,7 @@ Usando los datos generados en la parte 1 (ajustado la tabla Grades), se realizan
 
 ### Conteo de frecuencias
 
+*Conteo del numero de estudiantes por cada escuela.*
 ```sql
 
 SELECT school_id, COUNT(*) AS total_estudiantes
@@ -46,9 +47,18 @@ GROUP BY school_id;
 
 ```
 
-Resultado: El conteo de estudiantes separados por cada escuela.
-
 | school_id | total_estudiantes |
 |------------|-----------------|
 | GP         | 254               |
 | MS         | 246               |
+
+### Medi
+
+*Calificacion promedio en el G3 de todos los estudiantes que llevaron curso Math*
+```sql
+
+SELECT AVG(G3) AS promedio_G3_math
+FROM Grades
+WHERE course_id = 1;
+
+```
