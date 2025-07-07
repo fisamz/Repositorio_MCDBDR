@@ -8,7 +8,7 @@ Como parte 1 de la presente tarea, se utilizó **Mockaroo** como herramienta pri
 - [Modelo Relacional](../Tarea3/Tarea3.md)
 - [SQL (CREATE TABLE)](../Tarea4/Tarea4.md)
 
-En esta simulación no se consideran las tablas School y Courses, para estas tablas se mantienen los 2 registros agregados anteriormente, por otro lado, en las tablas Student y Grades se simulan 100 registros para cada tabla. 
+En esta simulación no se consideran las tablas School y Courses, para estas tablas se mantienen los 2 registros agregados anteriormente, por otro lado, en las tabla Student se simulan los datos para 500 estudiantes, mientras que para Grades se simulan 100 registros de calificaciones. 
 
 ### Respecto a Mockaroo...
 
@@ -21,7 +21,7 @@ Mockaroo es una herramienta en línea que facilita la creación de datos fictici
   - Exporta directamente en formatos como SQL, CSV, JSON, lo que simplifica la integración con bases de datos.
   - Es posible importar el CREATE TABLE de SQL para partir de una base al momento de crear el Schema (no aplica correctamente el dominio de los valores, hay que modificar manual).
 
-- **Limitaciones:**
+- **Limitaciones y Dificultades:**
   - No permite definir condiciones avanzadas de generación, como limitar la cantidad de veces que un valor se puede repetir (por ejemplo en este ejercicio ningun alumno puede tomar el mismo curso 2 veces, sin embargo estas condiciones de conteo no es posible implementarlas).
   - Las fórmulas y lógica condicional son limitadas a expresiones sencillas y no soportan memoria entre registros (no es posible llevar un conteo global o histórico de los valores generados).
 
@@ -29,3 +29,26 @@ Mockaroo es una herramienta en línea que facilita la creación de datos fictici
   - Para reglas complejas o condiciones de conteo, se recomienda complementar Mockaroo con un procesamiento posterior de los datos mediante scripts en lenguajes como Python o R.
   - Aprovechar la exportación en formato SQL para insertar los datos directamente en el SGBD y validar de inmediato su integridad.
 
+
+## Parte 2: Funciones de agregación (SQL)
+  
+*Disclaimer: Los datos generados por Mockaroo generan problemas en la tabla Grades dado que hay registros que tienen el mismo school_id y course_id, lo cual genera problemas al ser su primary key, para ello se realiza un script para modificar los valores con problema y se modifica el student_id a otro que no cause problema en la incorporación en la base de datos (esta problematica se menciona anteriormente).*
+
+Usando los datos generados en la parte 1 (ajustado la tabla Grades), se realizan las siguientes consultas de estadisticos:
+
+### Conteo de frecuencias
+
+```sql
+
+SELECT school_id, COUNT(*) AS total_estudiantes
+FROM Student
+GROUP BY school_id;
+
+```
+
+Resultado: El conteo de estudiantes separados por cada escuela.
+
+| school_id | total_estudiantes |
+|------------|-----------------|
+| GP         | 254               |
+| MS         | 246               |
