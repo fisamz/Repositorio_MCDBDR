@@ -114,6 +114,7 @@ EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 
 ```
+**Resultado Q1: 5 / Resultado Q3: 15**
 
 ### Moda
 
@@ -154,7 +155,7 @@ UNION ALL
 | G3      | 11           | 9          |
 
 
-## Hallazgos y dificultades
+### Hallazgos y dificultades
 
 - Se identificó que algunas funciones avanzadas de MySQL, como `PERCENTILE_CONT`, no estaban disponibles en la versión del servidor utilizada. Esto obligó a buscar soluciones alternativas para el cálculo de cuantiles, como ordenar los datos y utilizar `LIMIT OFFSET` para seleccionar el valor en la posición correspondiente.
 - El uso de variables como `@offset_q1` no fue aceptado directamente dentro de `LIMIT OFFSET`, por lo que se consideró el uso de queries dinámicos con `PREPARE` y `EXECUTE`.
