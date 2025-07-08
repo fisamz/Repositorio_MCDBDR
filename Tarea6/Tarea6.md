@@ -108,11 +108,87 @@ SET
 ---
 
 ### Subconsultas interesantes
-X
 
----
+***¿Quién es el estudiante con mejor promedio final en cada materia, dentro de cada escuela?***
 
-### Conclusiones
-X
+```sql
 
----
+SELECT 
+    s.school_id,
+    sc.name AS school_name,
+    g.course_id,
+    c.name AS course_name,
+    s.student_id,
+    ROUND((g.G1 + g.G2 + g.G3)/3.0, 2) AS final_grade
+FROM Grades g
+JOIN Student s ON g.student_id = s.student_id
+JOIN School sc ON s.school_id = sc.school_id
+JOIN Course c ON g.course_id = c.course_id
+WHERE ROUND((g.G1 + g.G2 + g.G3)/3.0, 2) = (
+    SELECT MAX(ROUND((g2.G1 + g2.G2 + g2.G3)/3.0, 2))
+    FROM Grades g2
+    JOIN Student s2 ON g2.student_id = s2.student_id
+    WHERE s2.school_id = s.school_id
+      AND g2.course_id = g.course_id
+)
+ORDER BY school_id, course_id;
+
+```
+| school_id | school_name           | course_id | course_name | student_id | final_grade |
+|-----------|------------------------|-----------|--------------|-------------|--------------|
+| GP        | Gabriel Pereira        | 1         | Math         | 2           | 16.67        |
+| GP        | Gabriel Pereira        | 2         | Portuguese   | 11          | 15.67        |
+| MS        | Mousinho da Silveira   | 1         | Math         | 183         | 16.67        |
+| MS        | Mousinho da Silveira   | 2         | Portuguese   | 6           | 14.67        |
+
+
+
+***¿Qué estudiante tiene más ausencias entre los que aprobaron el final (G3 ≥ 10) en ambos cursos?***
+
+```sql
+
+SELECT s.student_id, s.sex, s.age, s.absences
+FROM Student s
+WHERE s.student_id IN (
+    SELECT DISTINCT student_id
+    FROM Grades
+    WHERE G3 >= 10
+)
+ORDER BY s.absences DESC
+LIMIT 1;
+
+```
+
+| student_id | sex | age | absences |
+|------------|-----|-----|----------|
+| 123         | M   | 16  | 20       |
+
+
+***¿Qué estudiante con promedio sobresaliente (>17) en el G3 (calificacion del examen final) tiene el mayor nivel de “goout” (frecuencia de salir con amigos)?***
+
+```sql
+
+SELECT 
+    s.student_id, 
+    s.sex, 
+    s.age, 
+    g.course_id,
+    c.name AS course_name,
+    g.G3, 
+    s.goout
+FROM Student s
+JOIN Grades g ON s.student_id = g.student_id
+JOIN Course c ON g.course_id = c.course_id
+WHERE g.G3 > 17
+ORDER BY s.goout ASC
+LIMIT 1;
+
+
+```
+
+| student_id | sex | age | course_id | course_name | G3  | goout |
+|------------|-----|-----|-----------|--------------|-----|--------|
+| 94         | F   | 23  | 2         | Portuguese   | 19  | 4      |
+
+
+
