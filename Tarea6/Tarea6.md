@@ -1,7 +1,7 @@
 # Tarea 6 (Base de Datos Relacionales)
 
 ## Corrección de errores y subconsultas
-*[Contexto de las tablas de nuestra base de datos creado en SQL*](../Tarea4/Tarea4.md)*
+*[Contexto de las tablas creadas en SQL que componen las base de datos...](../Tarea4/Tarea4.md)*
 
 ### Revisión de inconsistencias
 
@@ -54,15 +54,54 @@ Si bien no se encontraron inconsistencias en la base de datos, las variables con
 ```sql
 
 UPDATE Student
-    SET 
-        schoolsup = CASE WHEN schoolsup = 'yes' THEN TRUE WHEN schoolsup = 'no' THEN FALSE ELSE schoolsup END,
-        famsup = CASE WHEN famsup = 'yes' THEN TRUE WHEN famsup = 'no' THEN FALSE ELSE famsup END,
-        paid = CASE WHEN paid = 'yes' THEN TRUE WHEN paid = 'no' THEN FALSE ELSE paid END,
-        activities = CASE WHEN activities = 'yes' THEN TRUE WHEN activities = 'no' THEN FALSE ELSE activities END,
-        nursery = CASE WHEN nursery = 'yes' THEN TRUE WHEN nursery = 'no' THEN FALSE ELSE nursery END,
-        higher = CASE WHEN higher = 'yes' THEN TRUE WHEN higher = 'no' THEN FALSE ELSE higher END,
-        internet = CASE WHEN internet = 'yes' THEN TRUE WHEN internet = 'no' THEN FALSE ELSE internet END,
-        romantic = CASE WHEN romantic = 'yes' THEN TRUE WHEN romantic = 'no' THEN FALSE ELSE romantic END;
+SET 
+    schoolsup = CASE 
+        WHEN LEFT(schoolsup, 1) = 'y' THEN TRUE
+        WHEN LEFT(schoolsup, 1) = 'n' THEN FALSE
+        ELSE schoolsup
+    END,
+    
+    famsup = CASE 
+        WHEN LEFT(famsup, 1) = 'y' THEN TRUE
+        WHEN LEFT(famsup, 1) = 'n' THEN FALSE
+        ELSE famsup
+    END,
+
+    paid = CASE 
+        WHEN LEFT(paid, 1) = 'y' THEN TRUE
+        WHEN LEFT(paid, 1) = 'n' THEN FALSE
+        ELSE paid
+    END,
+
+    activities = CASE 
+        WHEN LEFT(activities, 1) = 'y' THEN TRUE
+        WHEN LEFT(activities, 1) = 'n' THEN FALSE
+        ELSE activities
+    END,
+
+    nursery = CASE 
+        WHEN LEFT(nursery, 1) = 'y' THEN TRUE
+        WHEN LEFT(nursery, 1) = 'n' THEN FALSE
+        ELSE nursery
+    END,
+
+    higher = CASE 
+        WHEN LEFT(higher, 1) = 'y' THEN TRUE
+        WHEN LEFT(higher, 1) = 'n' THEN FALSE
+        ELSE higher
+    END,
+
+    internet = CASE 
+        WHEN LEFT(internet, 1) = 'y' THEN TRUE
+        WHEN LEFT(internet, 1) = 'n' THEN FALSE
+        ELSE internet
+    END,
+
+    romantic = CASE 
+        WHEN LEFT(romantic, 1) = 'y' THEN TRUE
+        WHEN LEFT(romantic, 1) = 'n' THEN FALSE
+        ELSE romantic
+    END;
 
 ```
 
