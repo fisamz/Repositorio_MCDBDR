@@ -47,7 +47,7 @@ HAVING COUNT(*) > 1;
 
 ---
 
-### Modificaciones a la base
+### Modificaciones a la Base de Datos
 
 Si bien no se encontraron inconsistencias en la base de datos, las variables consideras BOOL en lenguaje SQL aceptan como valor TRUE/FALSE, mientras que en la base de datos estas columnas tienen valor STRING YES/NO. Se modifican estas columnas para incorporar correctamente a la Base de Datos de acuerdo al tipo de valor definido:
 
