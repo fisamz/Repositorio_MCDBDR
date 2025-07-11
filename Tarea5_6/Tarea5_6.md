@@ -1,4 +1,4 @@
-# Tarea 5 (Base de Datos Relacionales)
+# Tarea 5-6 (Base de Datos Relacionales)
 
 ## Parte 1: Generación de Datos *(simulados con Mockaroo)*
 
