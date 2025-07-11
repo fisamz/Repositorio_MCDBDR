@@ -187,21 +187,65 @@ De manera ilustrativa, la subconsulta muestra lo siguiente:
 
 ---
 
-*Subconsultas de una vista*: Se pueden realizar subconsultas de las vistas anteriormente creadas al igual que lo realizamos con tablas, por ejemplo usando la vista llamada **Vista_Desempeno_Estudiantes** extraemos solo los hombres que hayan cursado matematicas y tengan una calificación sobresaliente (mayor o igual a 16).
+*Trigger*: Un trigger es un bloque de código que se ejecuta automáticamente cuando ocurre un evento en una tabla (como un INSERT, UPDATE o DELETE). En el ejemplo que haremos a continuación el Trigger se activara con el evento DELTE. 
+
+Este trigger se activa automáticamente antes de que un estudiante sea eliminado de la tabla Student. Su propósito es guardar una copia del ID, edad y sexo del estudiante en una tabla llamada Bajas_Estudiantes antes de que el registro desaparezca, considerando que desde la creación de las tablas se uso ON DELETE CASCADE, lo cual haré al borrar la info de un estudiante se borre sus registros de todas las demas tablas.
+
+Dentro de los beneficios de este trigger estan:
+
+- Permite mantener un historial de estudiantes eliminados, lo cual es útil si se requiere saber quién estuvo previamente en el sistema.
+- Aunque el estudiante se borre de la tabla principal, sus datos básicos quedan registrados automáticamente.
+- Sin este trigger, al borrar un estudiante, su información se perdería para siempre.
 
 ```sql
 
-CREATE VIEW Vista_Hombres_Math_Sobresalientes2 AS
-SELECT *
-FROM Vista_Desempeno_Estudiantes
-WHERE sex = 'M'
-  AND nombre_curso = (
-    SELECT name
-    FROM Course
-    WHERE name = 'Math'
-    LIMIT 1
-  )
-  AND calificacion_final >= 16;
+-- Se crea la tabla que se poblara cada vez que se active el trigger
 
-Select * FROM Vista_Hombres_Math_Sobresalientes2;
+CREATE TABLE Bajas_Estudiantes (
+    student_id INT,
+    edad INT,
+    sexo VARCHAR(1),
+    fecha_baja DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
+-- Trigger
+
+DELIMITER //
+
+CREATE TRIGGER log_baja_estudiante
+BEFORE DELETE ON Student
+FOR EACH ROW
+BEGIN
+    INSERT INTO Bajas_Estudiantes (student_id, edad, sexo)
+    VALUES (OLD.student_id, OLD.age, OLD.sex);
+END;
+
+//
+
+DELIMITER ;
+
+-- Test: Eliminar estudiantes de tabla Student
+
+DELETE FROM Student
+WHERE student_id <= 5;
+
+```
+
+Al crear la tabla Bajas_Estudiantes se observa vacia:
+
+| student\_id   | edad      | sexo      | fecha\_baja |
+| ------------- | --------- | --------- | ----------- |
+| *(sin datos)* | *(vacío)* | *(vacío)* | *(vacío)*   |
+
+Posterior a la prueba de borrar el registro de los estudiantes con ID 1 al 5 de la tabla Student, la tabla Bajas_Estudiantes se observa de la siguiente manera:
+
+| student\_id | edad | sexo | fecha\_baja         |
+| ----------- | ---- | ---- | ------------------- |
+| 1           | 16   | M    | 2025-07-11 13:48:58 |
+| 2           | 22   | M    | 2025-07-11 13:48:58 |
+| 3           | 23   | F    | 2025-07-11 13:48:58 |
+| 4           | 24   | F    | 2025-07-11 13:48:58 |
+| 5           | 23   | M    | 2025-07-11 13:48:58 |
+
+
+---
