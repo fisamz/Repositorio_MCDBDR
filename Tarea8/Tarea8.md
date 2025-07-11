@@ -51,6 +51,7 @@ Para fines ilustrativos, se extraen el top 10 de estudiantes con mejor promedio,
 | 300         | 17  | M   | Gabriel Pereira      | Math          | 18                  |
 | 159         | 17  | M   | Mousinho da Silveira | Math          | 18                  |
 
+---
 
 *VIEW + LEFT JOIN*: La vista **Vista_Estudiantes_Con_o_Sin_Calificaciones** muestra a todos los estudiantes, incluso si no tienen calificaciones registradas, junto con el nombre de la escuela a la que pertenecen y, si existe, el curso y su calificación final (G3). Dentro de los beneficios de esta vista estan: 
 
@@ -97,4 +98,6 @@ Para fines ilustrativos, con la ultima linea podemos observar los primeros 10 re
 | 493         | 20  | M   | Gabriel Pereira | *(NULL)*      | *(NULL)*            |
 | 492         | 20  | M   | Gabriel Pereira | Portuguese    | 12                  |
 | 491         | 24  | F   | Gabriel Pereira | *(NULL)*      | *(NULL)*            |
+
+---
 
