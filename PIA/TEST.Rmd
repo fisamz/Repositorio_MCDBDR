@@ -1,30 +1,36 @@
 ---
-title: "Untitled"
+title: "Análisis de ejemplo"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Aquí muestro resumen de `mtcars`:
 
-## GitHub xx
+```{r}
+summary(mtcars)
+Y ahora un gráfico:
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+boxplot(mpg ~ cyl, data = mtcars)
+En total cuento con r nrow(mtcars) filas.
 
-## Including Code
 
-You can include R code in the document as follows:
+---
 
-```{r cars}
-summary(cars)
-```
+## 🔁 Flujo de trabajo completo
 
-## Including Plots
+1. Crea un archivo `.Rmd` en VS Code o RStudio.  
+2. Inserta chunks como los anteriores.  
+3. Haz **Knit** (RStudio o `rmarkdown::render()` en R).  
+4. Se genera un `.md` y, si corresponde, carpeta `*_files/` con imágenes.  
+5. Haz **commit** y **push** en tu repo (asegúrate de agregar los `*_files/`).  
+6. Al ver el `.md` en GitHub, verás tanto el código como los outputs gráficos.
 
-You can also embed plots, for example:
+---
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+En resumen:  
+✅ Usa `.Rmd` →  
+✅ Inserta tus chunks de código y gráficos →  
+✅ Knit y sube al repo →  
+✅ Visualiza todo integrado en GitHub
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+¿Quieres que te prepare una plantilla con chunks de ejemplo y frontmatter ya listo? 😊
+::contentReference[oaicite:9]{index=9}
