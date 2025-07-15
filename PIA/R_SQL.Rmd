@@ -1,14 +1,25 @@
 ---
-title: "Untitled"
+title: "Uso de R para consultas MySQL"
 output: github_document
 ---
 
 ## 1) Librerias necesarias para la conexión
 
-```{r libraries}
+```{r libraries, , results='hide', message=FALSE, warning=FALSE}
 
+#Necesarias para la conexión de R - MySQL
 library(DBI) 
 library(RMariaDB)
+
+#En caso de desear hacer consultas y manipular los datos usando la lógica dplyr
+library(dplyr)
+library(dbplyr)
+
+#Librerias de formato para visualizar la información
+library(flextable)
+library(formattable)
+library(ggplot2)
+library(knitr)
 
 ```
 
@@ -20,9 +31,9 @@ con <- dbConnect(
   RMariaDB::MariaDB(),
   host     = "localhost",
   port     = 3306,
-  user     = "root",
-  password = rstudioapi::askForPassword("MySQL password"),
-  dbname   = "STUDENTS_PERFORMANCE_DB"
+  user     = "root", #colocar usario MySQL
+  password = rstudioapi::askForPassword("MySQL password"), #Ventana emergente para solicitar password
+  dbname   = "STUDENTS_PERFORMANCE_DB" #Cambiar aqui por la base de datos que se desea conectar
 )
 
 ```
@@ -39,13 +50,16 @@ dbListFields(con, "Grades") #Revisa los atributos de una de las tablas
 
 ## 4) Consulta a la base de datos manteniendo el languaje SQL:
 
-```{r detalle2}
+```{r detalle2, message=FALSE, warning=FALSE, fig.align ='center'}
 
 dbReadTable(con, "School") #Extrae todos los datos de una de las tablas
 
-califs <- dbGetQuery(con, "SELECT * FROM Grades")
+formattable(dbReadTable(con, "School"))
 
-califs
+
+califs <- dbGetQuery(con, "SELECT * FROM Grades")
+knitr::kable(califs)
+
 
 res <- dbGetQuery(con, "
   SELECT student_id, course_id, G3
@@ -54,13 +68,13 @@ res <- dbGetQuery(con, "
   LIMIT 50
 ")
 
-res
+flextable(res)
 
 ```
 
 ## 5) Creación de tablas
 
-```{r detalle3}
+```{r detalle3, fig.align='center'}
 
 df <- data.frame(
   name = c("Ana", "Luis", "María"),
@@ -75,6 +89,9 @@ dbWriteTable(
   field.types = c(name = "VARCHAR(20)", score = "INT")
 )
 
+#La tabla nueva creada en la base de datos se ve de la siguiente manera:
+flextable(dbGetQuery(con, "SELECT * FROM scores"))
+
 new_df <- data.frame(
   name = c("Carlos", "Elena"),
   score = c(88, 95)
@@ -82,6 +99,9 @@ new_df <- data.frame(
 
 dbWriteTable(con, "scores", new_df, append = TRUE)
 #Aquí usamos append = TRUE para añadir filas sin eliminar lo ya existente
+
+#La tabla nueva creada con los nuevos registros en la base de datos se ve de la siguiente manera:
+flextable(dbGetQuery(con, "SELECT * FROM scores"))
 
 ```
 
@@ -97,10 +117,7 @@ if ( dbExistsTable(con, "scores") == TRUE) { dbRemoveTable(con, "scores") }
 
 ## 7) Uso de dplyr para consultas
 
-```{r detalle5}
-
-library(dplyr)
-library(dbplyr)
+```{r detalle5, fig.align='center' , message=FALSE, warning=FALSE}
 
 grades_tbl <- tbl(con, "Grades")
 
@@ -111,6 +128,15 @@ grades_high <- grades_tbl %>%
 
 head(grades_high)
 
+hist(grades_high$G3)
+
+ggplot(grades_high, aes(x = G3)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "white") +
+  labs(title = "Distribución de Calificaciones (G3)",
+       x = "Calificación",
+       y = "Frecuencia") +
+  theme_minimal()
+
 ```
 
 
@@ -119,6 +145,5 @@ head(grades_high)
 ```{r detalle6}
 
   dbDisconnect(con)
-
 
 ```

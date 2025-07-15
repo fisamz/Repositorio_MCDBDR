@@ -1,11 +1,22 @@
-Untitled
+Uso de R para consultas MySQL
 ================
 
 ## 1) Librerias necesarias para la conexión
 
 ``` r
+#Necesarias para la conexión de R - MySQL
 library(DBI) 
 library(RMariaDB)
+
+#En caso de desear hacer consultas y manipular los datos usando la lógica dplyr
+library(dplyr)
+library(dbplyr)
+
+#Librerias de formato para visualizar la información
+library(flextable)
+library(formattable)
+library(ggplot2)
+library(knitr)
 ```
 
 ## 2) Conexión a una base de datos de MySQL desde R
@@ -15,9 +26,9 @@ con <- dbConnect(
   RMariaDB::MariaDB(),
   host     = "localhost",
   port     = 3306,
-  user     = "root",
-  password = rstudioapi::askForPassword("MySQL password"),
-  dbname   = "STUDENTS_PERFORMANCE_DB"
+  user     = "root", #colocar usario MySQL
+  password = rstudioapi::askForPassword("MySQL password"), #Ventana emergente para solicitar password
+  dbname   = "STUDENTS_PERFORMANCE_DB" #Cambiar aqui por la base de datos que se desea conectar
 )
 ```
 
@@ -46,22 +57,57 @@ dbReadTable(con, "School") #Extrae todos los datos de una de las tablas
     ## 2        MS Mousinho da Silveira
 
 ``` r
-califs <- dbGetQuery(con, "SELECT * FROM Grades")
-
-califs
+formattable(dbReadTable(con, "School"))
 ```
 
-    ##    student_id course_id G1 G2 G3
-    ## 1           1         1  5  6  6
-    ## 2           1         2  0 11 11
-    ## 3           2         1  5  5  6
-    ## 4           2         2  9 11 11
-    ## 5           3         1  7  8 10
-    ## 6           3         2 12 13 12
-    ## 7           4         1 15 14 15
-    ## 8           4         2 14 14 14
-    ## 9           5         1  6 10 10
-    ## 10          5         2 11 13 13
+<table class="table table-condensed">
+<thead>
+<tr>
+<th style="text-align:right;">
+school_id
+</th>
+<th style="text-align:right;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+GP
+</td>
+<td style="text-align:right;">
+Gabriel Pereira
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+MS
+</td>
+<td style="text-align:right;">
+Mousinho da Silveira
+</td>
+</tr>
+</tbody>
+</table>
+
+``` r
+califs <- dbGetQuery(con, "SELECT * FROM Grades")
+knitr::kable(califs)
+```
+
+| student_id | course_id |  G1 |  G2 |  G3 |
+|-----------:|----------:|----:|----:|----:|
+|          1 |         1 |   5 |   6 |   6 |
+|          1 |         2 |   0 |  11 |  11 |
+|          2 |         1 |   5 |   5 |   6 |
+|          2 |         2 |   9 |  11 |  11 |
+|          3 |         1 |   7 |   8 |  10 |
+|          3 |         2 |  12 |  13 |  12 |
+|          4 |         1 |  15 |  14 |  15 |
+|          4 |         2 |  14 |  14 |  14 |
+|          5 |         1 |   6 |  10 |  10 |
+|          5 |         2 |  11 |  13 |  13 |
 
 ``` r
 res <- dbGetQuery(con, "
@@ -71,20 +117,10 @@ res <- dbGetQuery(con, "
   LIMIT 50
 ")
 
-res
+flextable(res)
 ```
 
-    ##    student_id course_id G3
-    ## 1           1         1  6
-    ## 2           1         2 11
-    ## 3           2         1  6
-    ## 4           2         2 11
-    ## 5           3         1 10
-    ## 6           3         2 12
-    ## 7           4         1 15
-    ## 8           4         2 14
-    ## 9           5         1 10
-    ## 10          5         2 13
+<img src="R_SQL_files/figure-gfm/detalle2-1.png" style="display: block; margin: auto;" />
 
 ## 5) Creación de tablas
 
@@ -102,6 +138,13 @@ dbWriteTable(
   field.types = c(name = "VARCHAR(20)", score = "INT")
 )
 
+#La tabla nueva creada en la base de datos se ve de la siguiente manera:
+flextable(dbGetQuery(con, "SELECT * FROM scores"))
+```
+
+<img src="R_SQL_files/figure-gfm/detalle3-1.png" style="display: block; margin: auto;" />
+
+``` r
 new_df <- data.frame(
   name = c("Carlos", "Elena"),
   score = c(88, 95)
@@ -109,7 +152,12 @@ new_df <- data.frame(
 
 dbWriteTable(con, "scores", new_df, append = TRUE)
 #Aquí usamos append = TRUE para añadir filas sin eliminar lo ya existente
+
+#La tabla nueva creada con los nuevos registros en la base de datos se ve de la siguiente manera:
+flextable(dbGetQuery(con, "SELECT * FROM scores"))
 ```
+
+<img src="R_SQL_files/figure-gfm/detalle3-2.png" style="display: block; margin: auto;" />
 
 ## 6) Creación de tablas
 
@@ -120,32 +168,6 @@ if ( dbExistsTable(con, "scores") == TRUE) { dbRemoveTable(con, "scores") }
 ```
 
 ## 7) Uso de dplyr para consultas
-
-``` r
-library(dplyr)
-```
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-``` r
-library(dbplyr)
-```
-
-    ## 
-    ## Attaching package: 'dbplyr'
-
-    ## The following objects are masked from 'package:dplyr':
-    ## 
-    ##     ident, sql
 
 ``` r
 grades_tbl <- tbl(con, "Grades")
@@ -167,6 +189,23 @@ head(grades_high)
     ## 4          2         2    11
     ## 5          3         1    10
     ## 6          3         2    12
+
+``` r
+hist(grades_high$G3)
+```
+
+<img src="R_SQL_files/figure-gfm/detalle5-1.png" style="display: block; margin: auto;" />
+
+``` r
+ggplot(grades_high, aes(x = G3)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "white") +
+  labs(title = "Distribución de Calificaciones (G3)",
+       x = "Calificación",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+<img src="R_SQL_files/figure-gfm/detalle5-2.png" style="display: block; margin: auto;" />
 
 ## 9) Importante al final, desconectar la sesión
 
