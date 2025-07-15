@@ -1,17 +1,44 @@
 # Universidad Autonoma de Nuevo Leon
-## Facultad de Ciencias Físico Matemáticas
-### Maestría en Ciencia de Datos
+## Facultad de Ciencias Físico Matemáticas - Maestría en Ciencia de Datos
 
-#### Curso: Bases de Datos Relacionales
+### Proyecto Integrador de Aprendizaje: Conectividad R <-> MySQL
 
-Este es el repositorio para la materia BDR en la MCD impartida en FCFM, UANL. 
+Objetivos
+- Establecer una conexión segura entre R y MySQL a través de librerias como DBI y RMariaDB.
+- Leer, escribir y manipular datos desde R usando funciones como dbGetQuery(), dbWriteTable(), dbReadTable() y dbRemoveTable().
+- Optimizar consultas empleando el paquete dbplyr, para realizar operaciones con sintaxis dplyr pero ejecutadas directamente en la base de datos.
+- Gestionar el ciclo completo de vida de los datos: creación de tablas, inserción y modificación de registros, eliminación y limpieza de tablas.
+- Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, etc. 
 
-Materia impartida por el doctor [Alberto Benavides](https://github.com/albertobenavides)
+Existen distintas formas 
 
-- [Tarea 1](Tarea1/Tarea1.md)
-- [Tarea 2](Tarea2/Tarea2.md)
-- [Tarea 3](Tarea3/Tarea3.md)
-- [Tarea 4](Tarea4/Tarea4.md)
-- [Tareas 5 y 6](Tarea5+6/Tarea5+6.md)
-- [Tarea 7](Tarea7/Tarea7.md)
-- [Tarea 8](Tarea8/Tarea8.md)
+
+PIA/                          <- raíz del proyecto
+├── 01_introduccion/         <- documentación, readme, objetivos
+│   └── readme.md
+│
+├── 02_ejemplos_notebook/    <- ejemplos en notebooks
+│   ├── ejemplo_dbGetQuery.Rmd
+│   └── ejemplo_dbplyr.Rmd
+│
+├── 03_subconsultas_plots/   <- análisis con subconsultas y gráficos/tablas
+│   ├── subconsulta_1.Rmd
+│   └── subconsulta_2.Rmd
+│
+├── data/                    <- si incluyes datos de muestra o SQL de ejemplo
+│   └── consulta_ejemplo.sql
+│
+└── .gitignore
+
+
+
+
+Material de interes:
+- https://solutions.posit.co/connections/db/getting-started/database-queries/
+- https://rpubs.com/nwstephens/318586
+- https://solutions.posit.co/connections/db/r-packages/dbi/
+- https://solutions.posit.co/connections/db/r-packages/dplyr/
+- https://solutions.posit.co/connections/db/databases/my-sql/index.html#using-the-rmariadb-package
+
+
+
