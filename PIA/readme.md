@@ -10,7 +10,7 @@ Objetivos
 - Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, kabke, etc. 
 
 ---
-## [¿Quieres averiguar como hacer la conexión de R y MySQL y todo lo que puedes hacer? Click aqui ;)](R_SQL.md.md)
+### [¿Quieres averiguar como hacer la conexión de R y MySQL y todo lo que puedes hacer? Click aqui ;)](R_SQL.md.md)
 ---
 
 
