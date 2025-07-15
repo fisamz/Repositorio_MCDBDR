@@ -28,7 +28,7 @@ con <- dbConnect(
   port     = 3306,
   user     = "root", #colocar usario MySQL
   password = rstudioapi::askForPassword("MySQL password"), #Ventana emergente para solicitar password
-  dbname   = "STUDENTS_PERFORMANCE_DB" #Cambiar aqui por la base de datos que se desea conectar
+  dbname   = "StudentsPerformance_OfficialDB" #Cambiar aqui por la base de datos que se desea conectar
 )
 ```
 
@@ -93,7 +93,7 @@ Mousinho da Silveira
 
 ``` r
 califs <- dbGetQuery(con, "SELECT * FROM Grades")
-knitr::kable(califs)
+knitr::kable(head(califs))
 ```
 
 | student_id | course_id |  G1 |  G2 |  G3 |
@@ -104,17 +104,13 @@ knitr::kable(califs)
 |          2 |         2 |   9 |  11 |  11 |
 |          3 |         1 |   7 |   8 |  10 |
 |          3 |         2 |  12 |  13 |  12 |
-|          4 |         1 |  15 |  14 |  15 |
-|          4 |         2 |  14 |  14 |  14 |
-|          5 |         1 |   6 |  10 |  10 |
-|          5 |         2 |  11 |  13 |  13 |
 
 ``` r
 res <- dbGetQuery(con, "
   SELECT student_id, course_id, G3
   FROM Grades
-  WHERE G3 > 0
-  LIMIT 50
+  WHERE G3 > 15
+  LIMIT 10
 ")
 
 flextable(res)
@@ -147,7 +143,7 @@ flextable(dbGetQuery(con, "SELECT * FROM scores"))
 ``` r
 new_df <- data.frame(
   name = c("Carlos", "Elena"),
-  score = c(88, 95)
+  score = c(13, 14)
 )
 
 dbWriteTable(con, "scores", new_df, append = TRUE)

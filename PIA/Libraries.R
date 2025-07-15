@@ -97,5 +97,16 @@ dbRemoveTable(con, "scores")  # devuelve TRUE invisiblemente
 
 # Ahora:
 dbExistsTable(con, "scores")
-#> FALSE
+
+## 8) Dentro de un R Notebook es posible tener un bloque de consulta en SQL y el resultado guardarlo en un dataframe para su posterior manejo
+
+```{sql, connection=con, output.var = "mydataframe"}
+
+SELECT student_id, course_id, G3
+FROM Grades
+WHERE G3 > 0
+LIMIT 50
+
+```
+
 
