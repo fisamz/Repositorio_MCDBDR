@@ -15,4 +15,4 @@ Materia impartida por el doctor [Alberto Benavides](https://github.com/albertobe
 - [Tareas 5 y 6](Tarea5+6/Tarea5+6.md)
 - [Tarea 7](Tarea7/Tarea7.md)
 - [Tarea 8](Tarea8/Tarea8.md)
-- [Producto Integrador de Aprendizaje: Conexión R <> SQL](PIA/)
+- [Producto Integrador de Aprendizaje](PIA/)
