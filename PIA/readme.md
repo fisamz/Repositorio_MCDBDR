@@ -10,13 +10,13 @@ Objetivos
 - Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, kabke, etc. 
 
 ---
-### [¿Quieres averiguar como hacer la conexión de R y MySQL y todo lo que puedes hacer? Click aqui ;)](R_SQL.md.md)
+### [¿Quieres averiguar como hacer la conexión de R y MySQL y todo lo que puedes hacer? Click aqui ;)](R_SQL.md)
 ---
 
 
 En la presente carpeta también podrás encontrar;
 
-- [Archivo RMD (R Markdown) con el código fuente que crea lo visto en archivo .md](R_SQL.Rmd.md)
+- [Archivo RMD (R Markdown) con el código fuente que crea lo visto en archivo .md](R_SQL.Rmd)
 - [Carpeta de Imagenes generadas automaticamente para el archivo .md](R_SQL_files/figure-gfm/)
 
 
