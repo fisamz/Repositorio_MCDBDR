@@ -10,20 +10,20 @@ Objetivos
 - Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, kabke, etc. 
 
 ---
-### [>Click aqui para ver el detalle del proyecto ;)<](R_SQL.md.md)
+### [¿Quieres averiguar como hacer la conexión de R y MySQL y todo lo que puedes hacer? Click aqui ;)](R_SQL.md.md)
 ---
 
 
 En la presente carpeta también podrás encontrar;
 
-- [Archivo RMD (R Markdown) con el código fuente que crea lo visto en archivo MD](R_SQL.Rmd.md)
+- [Archivo RMD (R Markdown) con el código fuente que crea lo visto en archivo .md](R_SQL.Rmd.md)
 - [Carpeta de Imagenes generadas automaticamente para el archivo .md](R_SQL_files/figure-gfm/)
 
 
 
 
 
-Material de interes:
+URLs relacionadas:
 - https://solutions.posit.co/connections/db/getting-started/database-queries/
 - https://rpubs.com/nwstephens/318586
 - https://solutions.posit.co/connections/db/r-packages/dbi/
