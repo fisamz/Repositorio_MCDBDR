@@ -68,7 +68,8 @@ res <- dbGetQuery(con, "
   LIMIT 10
 ")
 
-flextable(res)
+knitr::kable(res)
+
 
 ```
 

@@ -113,10 +113,21 @@ res <- dbGetQuery(con, "
   LIMIT 10
 ")
 
-flextable(res)
+knitr::kable(res)
 ```
 
-<img src="R_SQL_files/figure-gfm/detalle2-1.png" style="display: block; margin: auto;" />
+| student_id | course_id |  G3 |
+|-----------:|----------:|----:|
+|          9 |         1 |  19 |
+|          9 |         2 |  17 |
+|         15 |         1 |  16 |
+|         16 |         2 |  17 |
+|         23 |         1 |  16 |
+|         32 |         1 |  17 |
+|         33 |         1 |  16 |
+|         37 |         1 |  18 |
+|         43 |         1 |  18 |
+|         48 |         1 |  20 |
 
 ## 5) Creación de tablas
 
