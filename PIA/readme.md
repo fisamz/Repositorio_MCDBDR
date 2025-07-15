@@ -7,14 +7,14 @@ Objetivos
 - Establecer una conexión segura entre R y MySQL a través de librerias como DBI y RMariaDB.
 - Leer, escribir y manipular datos desde R usando funciones como dbGetQuery(), dbWriteTable(), dbReadTable() y dbRemoveTable().
 - Optimizar consultas empleando el paquete dbplyr, para realizar operaciones con sintaxis dplyr pero ejecutadas directamente en la base de datos.
-- Gestionar el ciclo completo de vida de los datos: creación de tablas, inserción y modificación de registros, eliminación y limpieza de tablas.
-- Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, etc. 
+- Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, kabke, etc. 
 
-Considerando lo anterior, el proyecto se divide en las siguientes secciones:
+### [>Click aqui para ver el detalle del proyecto<](R_SQL.md.md)
 
-- [Consultas usando librerias DBI + RMariaDB](Tarea1.md)
-- [Consultas usando sintaxis de libreria dplyr desde R](Tarea2.md)
-- [Consultas usando R Notebooks](Tarea3.md)
+En la presente carpeta también podrás encontrar;
+
+- [Archivo RMD (R Markdown) con el código fuente que crea lo visto en archivo MD](R_SQL.Rmd.md)
+- [Carpeta de Imagenes generadas automaticamente para el archivo .md](R_SQL_files/figure-gfm/)
 
 
 
