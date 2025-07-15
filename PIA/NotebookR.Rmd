@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+
+library(DBI)
+library(RMariaDB)
+
+con <- dbConnect(
+  RMariaDB::MariaDB(),
+  host     = "localhost",
+  port     = 3306,
+  user     = "root",
+  password = rstudioapi::askForPassword("MySQL password"),
+  dbname   = "STUDENTS_PERFORMANCE_DB"
+)
+
+```
+
+
+```{sql, connection=con, output.var = "mydataframe"}
+
+  SELECT student_id, course_id, G3
+  FROM Grades
+  WHERE G3 > 0
+  LIMIT 50
+
+```
+
+
