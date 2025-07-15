@@ -9,7 +9,10 @@ Objetivos
 - Optimizar consultas empleando el paquete dbplyr, para realizar operaciones con sintaxis dplyr pero ejecutadas directamente en la base de datos.
 - Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, kabke, etc. 
 
-### [>Click aqui para ver el detalle del proyecto<](R_SQL.md.md)
+---
+### [>Click aqui para ver el detalle del proyecto ;)<](R_SQL.md.md)
+---
+
 
 En la presente carpeta también podrás encontrar;
 
