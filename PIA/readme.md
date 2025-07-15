@@ -10,25 +10,12 @@ Objetivos
 - Gestionar el ciclo completo de vida de los datos: creación de tablas, inserción y modificación de registros, eliminación y limpieza de tablas.
 - Explorar las ventajas que conlleva realizar consultas SQL desde R al complementar con otros paquetes de visualización de datos como ggplot, flextable, etc. 
 
-Existen distintas formas 
+Considerando lo anterior, el proyecto se divide en las siguientes secciones:
 
+- [Consultas usando librerias DBI + RMariaDB](Tarea1.md)
+- [Consultas usando sintaxis de libreria dplyr desde R](Tarea2.md)
+- [Consultas usando R Notebooks](Tarea3.md)
 
-PIA/                          <- raíz del proyecto
-├── 01_introduccion/         <- documentación, readme, objetivos
-│   └── readme.md
-│
-├── 02_ejemplos_notebook/    <- ejemplos en notebooks
-│   ├── ejemplo_dbGetQuery.Rmd
-│   └── ejemplo_dbplyr.Rmd
-│
-├── 03_subconsultas_plots/   <- análisis con subconsultas y gráficos/tablas
-│   ├── subconsulta_1.Rmd
-│   └── subconsulta_2.Rmd
-│
-├── data/                    <- si incluyes datos de muestra o SQL de ejemplo
-│   └── consulta_ejemplo.sql
-│
-└── .gitignore
 
 
 
