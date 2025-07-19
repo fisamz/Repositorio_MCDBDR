@@ -5,7 +5,7 @@
 En este documento se presenta la implementación de dos procedimientos almacenados en SQL para el análisis estadístico de datos:
 
 1. **Correlación de Pearson**: permite medir la fuerza y dirección de la relación lineal entre dos variables numéricas.
-2. **Regresión lineal simple**: ajusta un modelo lineal de la forma \( Y = \beta_0 + \beta_1 X \), estimando los coeficientes mediante mínimos cuadrados.
+2. **Regresión lineal simple**: ajusta un modelo lineal de la forma Y = beta_0 + beta_1*X, estimando los coeficientes mediante mínimos cuadrados.
 
 Ambos procedimientos han sido desarrollados utilizando funciones básicas de MySQL y se aplican a datos ficticios que simulan la relación entre horas de estudio (`X`) y calificaciones obtenidas (`Y`). Los resultados permiten identificar tanto la intensidad de la relación como un modelo predictivo entre las variables.
 
@@ -82,16 +82,7 @@ De manera ilustrativa, este es el conjunto de datos creado en SQL:
 
 La fórmula de la **correlación de Pearson** entre dos variables \( X \) y \( Y \) es:
 
-\[
-r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}
-\]
-
-Donde:
-- \( \bar{x} \) y \( \bar{y} \) son las medias de \( X \) y \( Y \), respectivamente.
-- \( r \) toma valores entre -1 y 1.
-  - \( r = 1 \): correlación positiva perfecta
-  - \( r = -1 \): correlación negativa perfecta
-  - \( r = 0 \): sin correlación lineal
+![Correlacion](Correlacion.png)
 
 ```sql
 
