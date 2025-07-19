@@ -153,11 +153,66 @@ La **regresión lineal simple** permite ajustar un modelo de la forma: Y = beta_
 donde:
 - \( Y \) es la variable dependiente (calificación),
 - \( X \) es la variable independiente (horas de estudio),
-- \( \beta_0 \) es la ordenada al origen (intercepto),
-- \( \beta_1 \) es la pendiente del modelo (efecto de una unidad de X sobre Y).
+- \( beta_0 \) es la ordenada al origen (intercepto),
+- \( beta_1 \) es la pendiente del modelo (efecto de una unidad de X sobre Y).
 
 Para estimar los parámetros, se utilizan las siguientes fórmulas:
 
 ![Betas](Betas.png)
 
 A continuación se presenta un procedimiento en SQL que calcula estos coeficientes a partir de los datos en las tablas `X` y `Y`.
+
+```sql
+
+DROP PROCEDURE IF EXISTS regresion_lineal;
+DELIMITER //
+
+CREATE PROCEDURE regresion_lineal(
+  OUT beta_0 DECIMAL(10,5),
+  OUT beta_1 DECIMAL(10,5)
+)
+BEGIN
+  DECLARE media_x DECIMAL(10,5);
+  DECLARE media_y DECIMAL(10,5);
+  DECLARE suma_xy DECIMAL(10,5);
+  DECLARE suma_x2 DECIMAL(10,5);
+
+  -- Calcular medias
+  SELECT AVG(val) INTO media_x FROM X;
+  SELECT AVG(val) INTO media_y FROM Y;
+
+  -- Calcular numerador y denominador para beta_1
+  SELECT 
+    SUM((X.val - media_x) * (Y.val - media_y)),
+    SUM(POW(X.val - media_x, 2))
+  INTO 
+    suma_xy, suma_x2
+  FROM X
+  JOIN Y ON X.id = Y.id;
+
+  -- Calcular pendiente y ordenada al origen
+  SET beta_1 = suma_xy / suma_x2;
+  SET beta_0 = media_y - beta_1 * media_x;
+END //
+
+DELIMITER ;
+
+```
+
+Después de ejecutar el procedimiento `regresion_lineal`, se obtuvieron los siguientes coeficientes:
+
+| beta_0 (intercepto) | beta_1 (pendiente) |
+|---------------------|--------------------|
+| 0.92855             | 1.33929            |
+
+**Interpretación del modelo:**
+
+La ecuación del modelo ajustado es:
+
+\hat{Y} = 0.92855 + 1.33929X
+
+Esto significa que:
+- Cuando las horas de estudio (`X`) son 0, la calificación esperada (`Y`) es aproximadamente 0.93.
+- Por cada hora adicional de estudio, la calificación aumenta en promedio **1.34 puntos**.
+
+El modelo refuerza la relación positiva detectada anteriormente con la correlación de Pearson.
