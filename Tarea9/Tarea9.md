@@ -145,3 +145,19 @@ Dado que el valor está muy cerca de 1, podemos afirmar que existe una **relaci�
 | \( r = -1 \)           | Correlación negativa perfecta           |
 
 ### 2) Regresión lineal entre dos variables
+
+## 2) Regresión lineal simple
+
+La **regresión lineal simple** permite ajustar un modelo de la forma: Y = beta_0 + beta_1*X
+
+donde:
+- \( Y \) es la variable dependiente (calificación),
+- \( X \) es la variable independiente (horas de estudio),
+- \( \beta_0 \) es la ordenada al origen (intercepto),
+- \( \beta_1 \) es la pendiente del modelo (efecto de una unidad de X sobre Y).
+
+Para estimar los parámetros, se utilizan las siguientes fórmulas:
+
+![Betas](Betas.png)
+
+A continuación se presenta un procedimiento en SQL que calcula estos coeficientes a partir de los datos en las tablas `X` y `Y`.
