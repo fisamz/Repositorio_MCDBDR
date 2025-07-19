@@ -126,4 +126,22 @@ El resultado del procedure es:
 |-------------|
 | 0.99697     |
 
+Este valor indica una **fuerte correlación lineal positiva** entre las variables `X` (horas de estudio) y `Y` (calificación). Es decir, a medida que aumentan las horas de estudio, también tiende a aumentar la calificación obtenida.
+
+Dado que el valor está muy cerca de 1, podemos afirmar que existe una **relación lineal casi perfecta** entre ambas variables en este conjunto de datos.
+
+#### Guía de interpretación del coeficiente \( r \):
+
+| Valor de \( r \)      | Interpretación                         |
+|------------------------|-----------------------------------------|
+| \( r = 1 \)            | Correlación positiva perfecta           |
+| \( 0.7 < r < 1 \)      | Correlación positiva fuerte             |
+| \( 0.3 < r \leq 0.7 \) | Correlación positiva moderada           |
+| \( 0 < r \leq 0.3 \)   | Correlación positiva débil              |
+| \( r = 0 \)            | Sin correlación lineal                  |
+| \( -0.3 \leq r < 0 \)  | Correlación negativa débil              |
+| \( -0.7 \leq r < -0.3 \) | Correlación negativa moderada        |
+| \( -1 < r < -0.7 \)    | Correlación negativa fuerte             |
+| \( r = -1 \)           | Correlación negativa perfecta           |
+
 ### 2) Regresión lineal entre dos variables
