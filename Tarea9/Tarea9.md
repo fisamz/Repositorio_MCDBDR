@@ -136,11 +136,11 @@ Dado que el valor está muy cerca de 1, podemos afirmar que existe una **relaci�
 |------------------------|-----------------------------------------|
 | \( r = 1 \)            | Correlación positiva perfecta           |
 | \( 0.7 < r < 1 \)      | Correlación positiva fuerte             |
-| \( 0.3 < r \leq 0.7 \) | Correlación positiva moderada           |
-| \( 0 < r \leq 0.3 \)   | Correlación positiva débil              |
+| \( 0.3 < r <= 0.7 \) | Correlación positiva moderada           |
+| \( 0 < r <= 0.3 \)   | Correlación positiva débil              |
 | \( r = 0 \)            | Sin correlación lineal                  |
-| \( -0.3 \leq r < 0 \)  | Correlación negativa débil              |
-| \( -0.7 \leq r < -0.3 \) | Correlación negativa moderada        |
+| \( -0.3 <= r < 0 \)  | Correlación negativa débil              |
+| \( -0.7 <= r < -0.3 \) | Correlación negativa moderada        |
 | \( -1 < r < -0.7 \)    | Correlación negativa fuerte             |
 | \( r = -1 \)           | Correlación negativa perfecta           |
 
