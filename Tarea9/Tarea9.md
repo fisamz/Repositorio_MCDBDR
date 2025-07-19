@@ -78,6 +78,8 @@ De manera ilustrativa, este es el conjunto de datos creado en SQL:
 | 6  | 6                    | 9.1              |
 | 7  | 7                    | 10.0             |
 
+---
+
 ### 1) Correlación entre dos conjuntos de datos
 
 La fórmula de la **correlación de Pearson** entre dos variables \( X \) y \( Y \) es:
@@ -144,9 +146,9 @@ Dado que el valor está muy cerca de 1, podemos afirmar que existe una **relaci�
 | \( -1 < r < -0.7 \)    | Correlación negativa fuerte             |
 | \( r = -1 \)           | Correlación negativa perfecta           |
 
-### 2) Regresión lineal entre dos variables
+---
 
-## 2) Regresión lineal simple
+### 2) Regresión lineal entre dos variables
 
 La **regresión lineal simple** permite ajustar un modelo de la forma: Y = beta_0 + beta_1*X
 
