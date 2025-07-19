@@ -80,7 +80,18 @@ De manera ilustrativa, este es el conjunto de datos creado en SQL:
 
 ### 1) Correlación entre dos conjuntos de datos
 
+La fórmula de la **correlación de Pearson** entre dos variables \( X \) y \( Y \) es:
 
+\[
+r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}
+\]
+
+Donde:
+- \( \bar{x} \) y \( \bar{y} \) son las medias de \( X \) y \( Y \), respectivamente.
+- \( r \) toma valores entre -1 y 1.
+  - \( r = 1 \): correlación positiva perfecta
+  - \( r = -1 \): correlación negativa perfecta
+  - \( r = 0 \): sin correlación lineal
 
 ```sql
 
