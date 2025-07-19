@@ -209,7 +209,7 @@ Después de ejecutar el procedimiento `regresion_lineal`, se obtuvieron los sigu
 
 La ecuación del modelo ajustado es:
 
-\hat{Y} = 0.92855 + 1.33929X
+Y = 0.92855 + 1.33929X
 
 Esto significa que:
 - Cuando las horas de estudio (`X`) son 0, la calificación esperada (`Y`) es aproximadamente 0.93.
