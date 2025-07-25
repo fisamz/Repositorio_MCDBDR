@@ -1,10 +1,10 @@
 Uso de R para consultas MySQL
 ================
 
-## 1) Librerias necesarias para la conexión
+## 1) Librerias necesarias para la conexión.
 
 ``` r
-#Necesarias para la conexión de R - MySQL
+#Necesarias para la conexión de R - MySQL TEST
 library(DBI) 
 library(RMariaDB)
 

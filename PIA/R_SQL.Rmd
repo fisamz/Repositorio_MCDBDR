@@ -7,7 +7,7 @@ output: github_document
 
 ```{r libraries, , results='hide', message=FALSE, warning=FALSE}
 
-#Necesarias para la conexión de R - MySQL
+#Necesarias para la conexión de R - MySQL TEST
 library(DBI) 
 library(RMariaDB)
 
