@@ -3,7 +3,7 @@ title: "Uso de R para consultas MySQL"
 output: github_document
 ---
 
-## 1) Librerias necesarias para la conexión
+## 1) Librerias necesarias para la conexión.
 
 ```{r libraries, , results='hide', message=FALSE, warning=FALSE}
 
